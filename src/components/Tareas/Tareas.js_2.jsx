@@ -30,7 +30,7 @@ import tableStyle from "assets/jss/material-dashboard-react/components/tableStyl
 function CustomTable({ ...props }) {
   const { classes, tableHead, tableData, tableHeaderColor } = props;
 
-  //*console.log(tableData);
+  //console.log(tableData);
 
   //tableData.map(character => (character = { character }));
   //console.log(tableData.map(character => (character = { character })));
@@ -54,33 +54,23 @@ function CustomTable({ ...props }) {
           </TableHead>
         ) : null}
         <TableBody>
-          {tableData.map((element, key) => {
+          {tableData.map((prop, key) => {
+            var arr3 = Object.values(prop);
+
+            arr3.splice(6, 1);
+            arr3.splice(6, 1);
+            arr3.splice(7, 1);
+            arr3.splice(4, 1);
+            arr3.splice(6, 1);
             return (
               <TableRow key={key} className={classes.tableBodyRow}>
-                <TableCell className={classes.tableCell}>
-                  {element.id}
-                </TableCell>
-                <TableCell className={classes.tableCell}>
-                  {element.name}
-                </TableCell>
-                <TableCell className={classes.tableCell}>
-                  {element.status}
-                </TableCell>
-                <TableCell className={classes.tableCell}>
-                  {element.species}
-                </TableCell>
-                <TableCell className={classes.tableCell}>
-                  {element.origin.name}
-                </TableCell>
-                <TableCell className={classes.tableCell}>
-                  {element.location.name}
-                </TableCell>
-                <TableCell className={classes.tableCell}>
-                  {element.created}
-                </TableCell>
-                <TableCell className={classes.tableCell}>
-                  play pause stop
-                </TableCell>
+                {arr3.map((prop, key) => {
+                  return (
+                    <TableCell className={classes.tableCell} key={key}>
+                      {prop}
+                    </TableCell>
+                  );
+                })}
               </TableRow>
             );
           })}

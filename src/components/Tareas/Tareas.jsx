@@ -1,20 +1,3 @@
-/*!
-
-=========================================================
-* Material Dashboard React - v1.7.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/material-dashboard-react
-* Copyright 2019 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/material-dashboard-react/blob/master/LICENSE.md)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
 import React from "react";
 import PropTypes from "prop-types";
 // @material-ui/core components
@@ -27,10 +10,12 @@ import TableCell from "@material-ui/core/TableCell";
 // core components
 import tableStyle from "assets/jss/material-dashboard-react/components/tableStyle.jsx";
 
+import Cronometro from "components/Cronometro/Cronometro.jsx";
+
 function CustomTable({ ...props }) {
   const { classes, tableHead, tableData, tableHeaderColor } = props;
 
-  //console.log(tableData);
+  //*console.log(tableData);
 
   //tableData.map(character => (character = { character }));
   //console.log(tableData.map(character => (character = { character })));
@@ -54,23 +39,33 @@ function CustomTable({ ...props }) {
           </TableHead>
         ) : null}
         <TableBody>
-          {tableData.map((prop, key) => {
-            var arr3 = Object.values(prop);
-
-            arr3.splice(6, 1);
-            arr3.splice(6, 1);
-            arr3.splice(7, 1);
-            arr3.splice(4, 1);
-            arr3.splice(6, 1);
+          {tableData.map((element, key) => {
             return (
               <TableRow key={key} className={classes.tableBodyRow}>
-                {arr3.map((prop, key) => {
-                  return (
-                    <TableCell className={classes.tableCell} key={key}>
-                      {prop}
-                    </TableCell>
-                  );
-                })}
+                <TableCell className={classes.tableCell}>
+                  {element.id}
+                </TableCell>
+                <TableCell className={classes.tableCell}>
+                  {element.name}
+                </TableCell>
+                <TableCell className={classes.tableCell}>
+                  {element.status}
+                </TableCell>
+                <TableCell className={classes.tableCell}>
+                  {element.species}
+                </TableCell>
+                <TableCell className={classes.tableCell}>
+                  {element.origin.name}
+                </TableCell>
+                <TableCell className={classes.tableCell}>
+                  {element.location.name}
+                </TableCell>
+                <TableCell className={classes.tableCell}>
+                  {element.created}
+                </TableCell>
+                <TableCell className={classes.tableCell}>
+                  <Cronometro />
+                </TableCell>
               </TableRow>
             );
           })}
